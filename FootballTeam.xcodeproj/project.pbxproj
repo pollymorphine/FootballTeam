@@ -16,6 +16,7 @@
 		CE82961724E169D80041688C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82961624E169D80041688C /* PlayerViewController.swift */; };
 		CE82961924E1729F0041688C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82961824E1729F0041688C /* MainViewController.swift */; };
 		CE82961B24E173040041688C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82961A24E173040041688C /* MainTableViewCell.swift */; };
+		CE8F73CB24E6FE6F0078C778 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,11 @@
 		CE82961624E169D80041688C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		CE82961824E1729F0041688C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE82961A24E173040041688C /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CE8F73CC24E6FF610078C778 /* Club+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Club+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE8F73CD24E6FF610078C778 /* Club+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Club+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE8F73CE24E6FF610078C778 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE06AFA024E700C7009FD362 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F73CC24E6FF610078C778 /* Club+CoreDataClass.swift */,
+				CE8F73CD24E6FF610078C778 /* Club+CoreDataProperties.swift */,
+				CE8F73CE24E6FF610078C778 /* Player+CoreDataClass.swift */,
+				CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CE8295F324E1639F0041688C = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +79,8 @@
 		CE8295FE24E1639F0041688C /* FootballTeam */ = {
 			isa = PBXGroup;
 			children = (
+				CE06AFA024E700C7009FD362 /* Models */,
+				CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */,
 				CE8295FF24E1639F0041688C /* AppDelegate.swift */,
 				CE82960124E1639F0041688C /* SceneDelegate.swift */,
 				CE82961824E1729F0041688C /* MainViewController.swift */,
@@ -152,6 +171,7 @@
 				CE82960A24E1639F0041688C /* FootballTeam.xcdatamodeld in Sources */,
 				CE82961724E169D80041688C /* PlayerViewController.swift in Sources */,
 				CE82961B24E173040041688C /* MainTableViewCell.swift in Sources */,
+				CE8F73CB24E6FE6F0078C778 /* CoreDataManager.swift in Sources */,
 				CE82961924E1729F0041688C /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import  CoreData
+import  Foundation
 
 class MainViewController: UITableViewController {
+    
+    var dataManager: CoreDataManager!
+
     
         override  func viewDidLoad() {
             super.viewDidLoad()
