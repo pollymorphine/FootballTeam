@@ -19,7 +19,7 @@ extension Player {
 
     @NSManaged public var age: Int16
     @NSManaged public var fullName: String?
-    @NSManaged public var image: Data?
+    @NSManaged public var image: NSObject?
     @NSManaged public var nationality: String?
     @NSManaged public var number: Int16
     @NSManaged public var position: String?

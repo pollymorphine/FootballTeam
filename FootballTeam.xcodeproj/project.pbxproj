@@ -17,6 +17,7 @@
 		CE82961924E1729F0041688C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82961824E1729F0041688C /* MainViewController.swift */; };
 		CE82961B24E173040041688C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82961A24E173040041688C /* MainTableViewCell.swift */; };
 		CE8F73CB24E6FE6F0078C778 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */; };
+		CE97259F24E99E3000258CDC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97259E24E99E3000258CDC /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CE8F73CD24E6FF610078C778 /* Club+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Club+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CE8F73CE24E6FF610078C778 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE97259E24E99E3000258CDC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				CE06AFA024E700C7009FD362 /* Models */,
+				CE97259E24E99E3000258CDC /* Constants.swift */,
 				CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */,
 				CE8295FF24E1639F0041688C /* AppDelegate.swift */,
 				CE82960124E1639F0041688C /* SceneDelegate.swift */,
@@ -173,6 +176,7 @@
 				CE82961B24E173040041688C /* MainTableViewCell.swift in Sources */,
 				CE8F73CB24E6FE6F0078C778 /* CoreDataManager.swift in Sources */,
 				CE82961924E1729F0041688C /* MainViewController.swift in Sources */,
+				CE97259F24E99E3000258CDC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Club" representedClassName="Club" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString="clubname"/>
         <relationship name="player" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Player" inverseName="club" inverseEntity="Player"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
-        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="fullName" optional="YES" attributeType="String"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="age" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" defaultValueString="name"/>
+        <attribute name="image" attributeType="Transformable"/>
         <attribute name="nationality" optional="YES" attributeType="String"/>
-        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="position" optional="YES" attributeType="String"/>
-        <attribute name="team" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="position" attributeType="String"/>
+        <attribute name="team" attributeType="String" defaultValueString="team"/>
         <relationship name="club" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Club" inverseName="player" inverseEntity="Club"/>
     </entity>
     <elements>
