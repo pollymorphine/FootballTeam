@@ -61,20 +61,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя Фамилия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkn-ZG-uUp">
-                                                    <rect key="frame" x="47" y="11" width="296" height="15.5"/>
+                                                    <rect key="frame" x="47" y="11" width="296" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-Tc-vOH">
-                                                    <rect key="frame" x="11" y="37.5" width="129" height="129.5"/>
+                                                    <rect key="frame" x="11" y="38" width="129" height="129"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="129" id="IgA-hp-uf5"/>
                                                         <constraint firstAttribute="width" constant="129" id="hnN-36-B1w"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umv-Xg-8dT">
-                                                    <rect key="frame" x="148.5" y="38" width="214.5" height="129"/>
+                                                    <rect key="frame" x="149" y="38.5" width="214" height="128.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cjB-Lm-N1o">
                                                             <rect key="frame" x="11" y="18" width="170" height="93"/>
@@ -169,12 +169,12 @@
                                                 <constraint firstItem="umv-Xg-8dT" firstAttribute="top" secondItem="zkn-ZG-uUp" secondAttribute="bottom" constant="11.5" id="OAD-4Z-Ceo"/>
                                                 <constraint firstAttribute="trailing" secondItem="umv-Xg-8dT" secondAttribute="trailing" constant="12" id="TeY-v8-8b3"/>
                                                 <constraint firstAttribute="bottom" secondItem="d5G-Tc-vOH" secondAttribute="bottom" constant="11" id="XNq-1d-oib"/>
-                                                <constraint firstItem="d5G-Tc-vOH" firstAttribute="top" secondItem="FRt-OZ-2MM" secondAttribute="bottom" constant="5.5" id="cFD-0t-gUD"/>
+                                                <constraint firstItem="d5G-Tc-vOH" firstAttribute="top" secondItem="FRt-OZ-2MM" secondAttribute="bottom" constant="6" id="cFD-0t-gUD"/>
                                                 <constraint firstItem="d5G-Tc-vOH" firstAttribute="leading" secondItem="NwQ-O3-K8K" secondAttribute="leading" constant="11" id="dJ4-UJ-o6C"/>
                                                 <constraint firstAttribute="bottom" secondItem="umv-Xg-8dT" secondAttribute="bottom" constant="11" id="dgg-yS-KYf"/>
                                                 <constraint firstItem="FRt-OZ-2MM" firstAttribute="leading" secondItem="NwQ-O3-K8K" secondAttribute="leading" constant="11" id="l9i-ae-hIR"/>
                                                 <constraint firstItem="FRt-OZ-2MM" firstAttribute="top" secondItem="NwQ-O3-K8K" secondAttribute="top" constant="4" id="oho-Nt-w2U"/>
-                                                <constraint firstItem="umv-Xg-8dT" firstAttribute="leading" secondItem="d5G-Tc-vOH" secondAttribute="trailing" constant="8.5" id="phc-es-slZ"/>
+                                                <constraint firstItem="umv-Xg-8dT" firstAttribute="leading" secondItem="d5G-Tc-vOH" secondAttribute="trailing" constant="9" id="phc-es-slZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -318,7 +318,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="22" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6OH-Xt-ix3">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6OH-Xt-ix3">
                                 <rect key="frame" x="247.5" y="192" width="35" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

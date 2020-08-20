@@ -31,6 +31,7 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
         setupUI()
         setKeyboardNotification()
         addGesture()
+        setupDelegate() 
    }
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
@@ -86,6 +87,14 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = .blue
         navigationItem.title = Text.titlePlayerVC
+    }
+    
+    private func setupDelegate() {
+        imagePickerController.delegate = self
+        playerNumber.delegate = self
+        playerAge.delegate = self
+        playerName.delegate = self
+        playerNationality.delegate = self
     }
     
     private func disableSaveItemButton() {
