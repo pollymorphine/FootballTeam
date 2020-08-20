@@ -18,6 +18,7 @@
 		CE82961B24E173040041688C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82961A24E173040041688C /* MainTableViewCell.swift */; };
 		CE8F73CB24E6FE6F0078C778 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */; };
 		CE97259F24E99E3000258CDC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97259E24E99E3000258CDC /* Constants.swift */; };
+		CE9EB3DD24EEF3E4006522EF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EB3DC24EEF3E4006522EF /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CE8F73CE24E6FF610078C778 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CE97259E24E99E3000258CDC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE9EB3DC24EEF3E4006522EF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				CE8F73CD24E6FF610078C778 /* Club+CoreDataProperties.swift */,
 				CE8F73CE24E6FF610078C778 /* Player+CoreDataClass.swift */,
 				CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */,
+				CE82960824E1639F0041688C /* FootballTeam.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -81,21 +84,61 @@
 		CE8295FE24E1639F0041688C /* FootballTeam */ = {
 			isa = PBXGroup;
 			children = (
+				CE9EB3DF24EF0653006522EF /* Code */,
+				CE9EB3E224EF06CD006522EF /* CoreDataManager */,
+				CE9EB3DE24EF0611006522EF /* Controllers */,
 				CE06AFA024E700C7009FD362 /* Models */,
-				CE97259E24E99E3000258CDC /* Constants.swift */,
-				CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */,
-				CE8295FF24E1639F0041688C /* AppDelegate.swift */,
-				CE82960124E1639F0041688C /* SceneDelegate.swift */,
-				CE82961824E1729F0041688C /* MainViewController.swift */,
-				CE82961A24E173040041688C /* MainTableViewCell.swift */,
-				CE82961624E169D80041688C /* PlayerViewController.swift */,
-				CE82960524E1639F0041688C /* Main.storyboard */,
-				CE82960B24E163A20041688C /* Assets.xcassets */,
-				CE82960D24E163A20041688C /* LaunchScreen.storyboard */,
+				CE9EB3E024EF0673006522EF /* Views */,
+				CE9EB3E124EF06AA006522EF /* Helpers */,
 				CE82961024E163A20041688C /* Info.plist */,
-				CE82960824E1639F0041688C /* FootballTeam.xcdatamodeld */,
 			);
 			path = FootballTeam;
+			sourceTree = "<group>";
+		};
+		CE9EB3DE24EF0611006522EF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE82961824E1729F0041688C /* MainViewController.swift */,
+				CE82961624E169D80041688C /* PlayerViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE9EB3DF24EF0653006522EF /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				CE8295FF24E1639F0041688C /* AppDelegate.swift */,
+				CE82960124E1639F0041688C /* SceneDelegate.swift */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		CE9EB3E024EF0673006522EF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE82961A24E173040041688C /* MainTableViewCell.swift */,
+				CE82960524E1639F0041688C /* Main.storyboard */,
+				CE82960D24E163A20041688C /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE9EB3E124EF06AA006522EF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CE97259E24E99E3000258CDC /* Constants.swift */,
+				CE9EB3DC24EEF3E4006522EF /* UIViewController+Extension.swift */,
+				CE82960B24E163A20041688C /* Assets.xcassets */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CE9EB3E224EF06CD006522EF /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9EB3DD24EEF3E4006522EF /* UIViewController+Extension.swift in Sources */,
 				CE82960024E1639F0041688C /* AppDelegate.swift in Sources */,
 				CE82960224E1639F0041688C /* SceneDelegate.swift in Sources */,
 				CE82960A24E1639F0041688C /* FootballTeam.xcdatamodeld in Sources */,

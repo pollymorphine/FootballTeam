@@ -23,7 +23,6 @@ extension Player {
     @NSManaged public var nationality: String?
     @NSManaged public var number: Int16
     @NSManaged public var position: String?
-    @NSManaged public var team: String?
     @NSManaged public var club: Club?
 
 }

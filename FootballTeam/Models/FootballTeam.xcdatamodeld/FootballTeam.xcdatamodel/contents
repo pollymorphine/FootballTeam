@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Club" representedClassName="Club" syncable="YES" codeGenerationType="class">
-        <attribute name="name" attributeType="String" defaultValueString="clubname"/>
+        <attribute name="name" attributeType="String"/>
         <relationship name="player" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Player" inverseName="club" inverseEntity="Player"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
-        <attribute name="age" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="fullName" optional="YES" attributeType="String" defaultValueString="name"/>
+        <attribute name="age" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="fullName" attributeType="String"/>
         <attribute name="image" attributeType="Transformable"/>
-        <attribute name="nationality" optional="YES" attributeType="String"/>
-        <attribute name="number" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="nationality" attributeType="String"/>
+        <attribute name="number" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="position" attributeType="String"/>
-        <attribute name="team" attributeType="String" defaultValueString="team"/>
         <relationship name="club" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Club" inverseName="player" inverseEntity="Club"/>
     </entity>
     <elements>
         <element name="Club" positionX="-46.94921875" positionY="-138.37890625" width="128" height="73"/>
-        <element name="Player" positionX="-55.6796875" positionY="71.6015625" width="128" height="163"/>
+        <element name="Player" positionX="-55.6796875" positionY="71.6015625" width="128" height="148"/>
     </elements>
 </model>
