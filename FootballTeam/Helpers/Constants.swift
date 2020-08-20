@@ -9,7 +9,7 @@
 import Foundation
 
 enum Array {
-    static let teams = ["Juventus", "Real Madrid", "Manchester United", "Chelsea", "Arsenal"]
+    static let teams = ["Juventus", "Real Madrid", "Barcelona", "Chelsea", "Arsenal"]
     static let position = ["Midfielder", "Goalkeeper", "Defender", "Forward" ]
 }
 
