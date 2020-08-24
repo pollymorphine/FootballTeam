@@ -27,5 +27,6 @@ enum Name {
     static let model = "FootballTeam"
     static let mainIdentifier = "MainViewController"
     static let playerIdentifier = "PlayerViewController"
+    static let searchIdentifier = "SearchViewController"
     static let cellIdentifier = "Cell"
 }

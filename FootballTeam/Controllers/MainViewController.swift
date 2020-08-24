@@ -28,6 +28,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
     }
     
+    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: Name.main, bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: Name.searchIdentifier) as! SearchViewController
+        searchViewController.modalTransitionStyle = .crossDissolve
+        searchViewController.modalPresentationStyle = .overCurrentContext
+        searchViewController.delegate = self
+        present(searchViewController, animated: false, completion: nil)
+    }
+    
+    
     @IBAction private func addItemButtonPressed(_ sender: UIBarButtonItem) {
           let storyboard = UIStoryboard(name: Name.main, bundle: nil)
           let vc = storyboard.instantiateViewController(withIdentifier: Name.playerIdentifier) as! PlayerViewController
@@ -47,6 +57,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
      }
     
     private func setupUI() {
+        let headerView = UIView (frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width
+                   , height: 70))
+               let segment = UISegmentedControl(frame: CGRect(x: 20, y: 20, width: tableView.frame.size.width - 40, height: 30))
+               segment.insertSegment(withTitle: "All", at: 0, animated: true)
+               segment.insertSegment(withTitle: "In Play", at: 1, animated: true)
+               segment.insertSegment(withTitle: "Bench", at: 2, animated: true)
+        headerView.addSubview(segment)
+        segment.selectedSegmentIndex = 0
+
+        self.tableView.tableHeaderView = headerView
+        
         navigationController?.navigationBar.barTintColor = .white
     }
     
@@ -77,5 +98,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 }
+
+extension MainViewController: SearchDelegate {
+    func viewController(_ viewController: SearchViewController, didPassedData predicate: NSCompoundPredicate) {
+        
+    }
+    
+    
+}
+
 
 

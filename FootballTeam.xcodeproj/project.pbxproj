@@ -19,6 +19,9 @@
 		CE8F73CB24E6FE6F0078C778 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F73CA24E6FE6F0078C778 /* CoreDataManager.swift */; };
 		CE97259F24E99E3000258CDC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97259E24E99E3000258CDC /* Constants.swift */; };
 		CE9EB3DD24EEF3E4006522EF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EB3DC24EEF3E4006522EF /* UIViewController+Extension.swift */; };
+		CEAEC74524F1A5050087CAE1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEC74424F1A5050087CAE1 /* SearchViewController.swift */; };
+		CEAEC74724F1C2530087CAE1 /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEC74624F1C2530087CAE1 /* SearchContainerView.swift */; };
+		CEB1579D24F2EAEF000B1B5B /* Extension+MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB1579C24F2EAEF000B1B5B /* Extension+MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CE97259E24E99E3000258CDC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE9EB3DC24EEF3E4006522EF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		CEAEC74424F1A5050087CAE1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CEAEC74624F1C2530087CAE1 /* SearchContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerView.swift; sourceTree = "<group>"; };
+		CEB1579C24F2EAEF000B1B5B /* Extension+MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+MainViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 				CE8F73CE24E6FF610078C778 /* Player+CoreDataClass.swift */,
 				CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */,
 				CE82960824E1639F0041688C /* FootballTeam.xcdatamodeld */,
+				CEB1579C24F2EAEF000B1B5B /* Extension+MainViewController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,6 +107,7 @@
 			children = (
 				CE82961824E1729F0041688C /* MainViewController.swift */,
 				CE82961624E169D80041688C /* PlayerViewController.swift */,
+				CEAEC74424F1A5050087CAE1 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				CE82961A24E173040041688C /* MainTableViewCell.swift */,
+				CEAEC74624F1C2530087CAE1 /* SearchContainerView.swift */,
 				CE82960524E1639F0041688C /* Main.storyboard */,
 				CE82960D24E163A20041688C /* LaunchScreen.storyboard */,
 			);
@@ -212,13 +221,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAEC74524F1A5050087CAE1 /* SearchViewController.swift in Sources */,
 				CE9EB3DD24EEF3E4006522EF /* UIViewController+Extension.swift in Sources */,
+				CEAEC74724F1C2530087CAE1 /* SearchContainerView.swift in Sources */,
 				CE82960024E1639F0041688C /* AppDelegate.swift in Sources */,
 				CE82960224E1639F0041688C /* SceneDelegate.swift in Sources */,
 				CE82960A24E1639F0041688C /* FootballTeam.xcdatamodeld in Sources */,
 				CE82961724E169D80041688C /* PlayerViewController.swift in Sources */,
 				CE82961B24E173040041688C /* MainTableViewCell.swift in Sources */,
 				CE8F73CB24E6FE6F0078C778 /* CoreDataManager.swift in Sources */,
+				CEB1579D24F2EAEF000B1B5B /* Extension+MainViewController.swift in Sources */,
 				CE82961924E1729F0041688C /* MainViewController.swift in Sources */,
 				CE97259F24E99E3000258CDC /* Constants.swift in Sources */,
 			);
