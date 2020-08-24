@@ -58,18 +58,29 @@ final class CoreDataManager {
         save(context: context)
     }
     
-    func fetchData<T: NSManagedObject>(for entity: T.Type) -> [T] {
+
+    func fetchData<T: NSManagedObject>(for entity: T.Type, predicate: NSCompoundPredicate? = nil) -> [T] {
         let context = getContext()
         let request: NSFetchRequest<T>
-        var fetchResult = [T]()
-        let entityName = String(describing: entity)
-        request = NSFetchRequest(entityName: entityName)
+        var fetchedResult = [T]()
+       
+        if #available(iOS 10.0, *) {
+            request = entity.fetchRequest() as! NSFetchRequest<T>
+        } else {
+            let entityName = String(describing: entity)
+            request = NSFetchRequest(entityName: entityName)
+        }
+        
+        let priceSortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+        
+        request.predicate = predicate
+        request.sortDescriptors = [priceSortDescriptor]
         
         do {
-            fetchResult = try context.fetch(request)
+            fetchedResult = try context.fetch(request)
         } catch {
             debugPrint("Could not fetch: \(error.localizedDescription)")
         }
-        return fetchResult
+        return fetchedResult
     }
 }
