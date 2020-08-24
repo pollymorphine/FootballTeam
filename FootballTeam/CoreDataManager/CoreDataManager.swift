@@ -71,7 +71,7 @@ final class CoreDataManager {
             request = NSFetchRequest(entityName: entityName)
         }
         
-        let priceSortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+        let priceSortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
         
         request.predicate = predicate
         request.sortDescriptors = [priceSortDescriptor]

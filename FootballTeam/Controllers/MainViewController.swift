@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override  func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+       // fillDataModel() 
         tableView.tableFooterView = UIView()
     }
     
@@ -45,8 +46,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
           navigationController?.pushViewController(vc, animated: true)
       }
     
-    private func fetchData() {
-         players = dataManager.fetchData(for: Player.self)
+    private func fetchData(predicate: NSCompoundPredicate? = nil) {
+         players = dataManager.fetchData(for: Player.self, predicate: predicate)
          
          if !players.isEmpty {
              tableView.isHidden = false
