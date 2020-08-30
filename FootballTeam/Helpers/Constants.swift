@@ -20,6 +20,11 @@ enum Text {
     static let choosePosition = "Choose position"
     static let message = "\n\n\n\n\n\n\n\n\n"
     static let titlePlayerVC = "Add player"
+    static let selectTeam = "Select team"
+    static let selectPosition = "Select position"
+    static let all = "All"
+    static let inPlay = "in Play"
+    static let bench = "Bench"
 }
 
 enum Name {
@@ -29,4 +34,11 @@ enum Name {
     static let playerIdentifier = "PlayerViewController"
     static let searchIdentifier = "SearchViewController"
     static let cellIdentifier = "Cell"
+}
+
+enum Predicate {
+    static let playerName = "fullName CONTAINS[cd]"
+    static let teamName = "team.name CONTAINS[cd]"
+    static let position = "position CONTAINS[cd]"
+    static let age = "age"
 }

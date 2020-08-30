@@ -9,17 +9,24 @@
 import UIKit
 import  CoreData
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-   
+    
+    // MARK: - Private properties
+    
+    private var selectedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [])
+    private var segmentedControl: UISegmentedControl!
     private var players = [Player]()
+    
     var dataManager: CoreDataManager!
-
+    
+    // MARK: - Life cyrcle
+    
     override  func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-       // fillDataModel() 
+        //fillDataModel()
         tableView.tableFooterView = UIView()
     }
     
@@ -28,6 +35,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         fetchData()
         tableView.reloadData()
     }
+    
+    // MARK: - Methods
     
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: Name.main, bundle: nil)
@@ -38,39 +47,70 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(searchViewController, animated: false, completion: nil)
     }
     
-    
     @IBAction private func addItemButtonPressed(_ sender: UIBarButtonItem) {
-          let storyboard = UIStoryboard(name: Name.main, bundle: nil)
-          let vc = storyboard.instantiateViewController(withIdentifier: Name.playerIdentifier) as! PlayerViewController
-          vc.dataManager = dataManager
-          navigationController?.pushViewController(vc, animated: true)
-      }
+        let storyboard = UIStoryboard(name: Name.main, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: Name.playerIdentifier) as! PlayerViewController
+        vc.dataManager = dataManager
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func segmentedControlChanged(_ sender: Any?) {
+        fetchData(predicate: selectedPredicate)
+        self.tableView.reloadData()
+    }
+    
+    // MARK: - Private methods
     
     private func fetchData(predicate: NSCompoundPredicate? = nil) {
-         players = dataManager.fetchData(for: Player.self, predicate: predicate)
-         
-         if !players.isEmpty {
-             tableView.isHidden = false
-         } else {
-             tableView.isHidden = true
-         }
-         tableView.reloadData()
-     }
+        let sortedPlayers = dataManager.fetchData(for: Player.self, predicate: predicate)
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            players = sortedPlayers
+        case 1:
+            players = sortedPlayers.filter({$0.inPlay})
+        case 2:
+            players = sortedPlayers.filter({!$0.inPlay})
+        default:
+            break
+        }
+        
+        if !players.isEmpty {
+            tableView.isHidden = false
+        } else {
+            tableView.isHidden = true
+        }
+    }
     
     private func setupUI() {
-        let headerView = UIView (frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width
-                   , height: 70))
-               let segment = UISegmentedControl(frame: CGRect(x: 20, y: 20, width: tableView.frame.size.width - 40, height: 30))
-               segment.insertSegment(withTitle: "All", at: 0, animated: true)
-               segment.insertSegment(withTitle: "In Play", at: 1, animated: true)
-               segment.insertSegment(withTitle: "Bench", at: 2, animated: true)
-        headerView.addSubview(segment)
+        let headerView = UIView (frame: CGRect(x: 0,
+                                               y: 0,
+                                               width: tableView.frame.size.width,
+                                               height: 70))
+        
+        let segment = UISegmentedControl(frame: CGRect(x: 20,
+                                                       y: 20,
+                                                       width: tableView.frame.size.width - 40,
+                                                       height: 30))
+        
+        segment.insertSegment(withTitle: Text.all, at: 0, animated: true)
+        segment.insertSegment(withTitle: Text.inPlay, at: 1, animated: true)
+        segment.insertSegment(withTitle: Text.bench, at: 2, animated: true)
+        segment.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
         segment.selectedSegmentIndex = 0
-
+        
+        headerView.addSubview(segment)
+        
+        self.segmentedControl = segment
         self.tableView.tableHeaderView = headerView
         
         navigationController?.navigationBar.barTintColor = .white
     }
+}
+
+// MARK: - DataSourse & Delegate
+
+extension MainViewController:  UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count
@@ -82,7 +122,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.setupCell(with: players[indexPath.row])
         return cell
     }
-        
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -101,11 +141,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 }
 
 extension MainViewController: SearchDelegate {
+    
     func viewController(_ viewController: SearchViewController, didPassedData predicate: NSCompoundPredicate) {
-        
+        fetchData(predicate: predicate)
+        tableView.reloadData()
     }
-    
-    
 }
 
 

@@ -25,7 +25,7 @@ extension MainViewController {
         player1.number = 12
         player1.position = Array.position[1]
         player1.club = team1
-        // player1.inPlay = true
+        player1.inPlay = true
         
         let team2 = dataManager.createObject(from: Club.self)
         team2.name = Array.teams[0]
@@ -38,7 +38,7 @@ extension MainViewController {
         player2.number = 7
         player2.position = Array.position[3]
         player2.club = team2
-        // player1.inPlay = true
+        player2.inPlay = false
         
         let team3 = dataManager.createObject(from: Club.self)
         team3.name = Array.teams[2]
@@ -51,7 +51,7 @@ extension MainViewController {
         player3.number = 22
         player3.position = Array.position[0]
         player3.club = team3
-        // player1.inPlay = true
+        player3.inPlay = true
         
         let team4 = dataManager.createObject(from: Club.self)
         team4.name = Array.teams[1]
@@ -64,7 +64,7 @@ extension MainViewController {
         player4.number = 2
         player4.position = Array.position[2]
         player4.club = team4
-        // player1.inPlay = true
+        player4.inPlay = false
         
         let player5 = dataManager.createObject(from: Player.self)
         player5.age = 25
@@ -74,7 +74,7 @@ extension MainViewController {
         player5.number = 23
         player5.position = Array.position[2]
         player5.club = team4
-        // player1.inPlay = true
+        player5.inPlay = false
         
         let team6 = dataManager.createObject(from: Club.self)
         team6.name = Array.teams[4]
@@ -87,7 +87,7 @@ extension MainViewController {
         player6.number = 21
         player6.position = Array.position[1]
         player6.club = team6
-        // player1.inPlay = true
+        player6.inPlay = true
         
       
         
@@ -99,7 +99,7 @@ extension MainViewController {
         player7.number = 10
         player7.position = Array.position[3]
         player7.club = team2
-        // player1.inPlay = true
+        player7.inPlay = true
         
         dataManager.save(context: context)
         

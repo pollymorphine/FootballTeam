@@ -10,6 +10,8 @@ import UIKit
 
 class PlayerViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - IBOutlet
+    
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var playerNumber: UITextField!
     @IBOutlet weak var playerPhoto: UIImageView!
@@ -19,6 +21,9 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var selectTeamButton: UIButton!
     @IBOutlet weak var selectPositionButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    // MARK: - Private properties
     
     private var imagePickerController = UIImagePickerController()
     private var selectedTeam: String!
@@ -26,13 +31,16 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
     private var isSelectTeam = true
     var dataManager: CoreDataManager!
     
+    // MARK: - Life cyrcle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setKeyboardNotification()
-        addGesture()
         setupDelegate() 
-   }
+    }
+    
+    // MARK: - Methods
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
         present(imagePickerController, animated: true, completion: nil)
@@ -59,24 +67,29 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
         guard let num = playerAge.text else { return }
         player.fullName = playerName.text
         player.nationality = playerNationality.text
-        player.age = Int16(age)!
-        player.number = Int16(num)!
+        player.age = Int16(age) ?? 0
+        player.number = Int16(num) ?? 0
         player.position = selectedPosition
         player.club = team
         player.image = playerPhoto.image
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            player.inPlay = true
+        case 1:
+            player.inPlay = false
+        default: ()
+        }
         
         dataManager.save(context: context)
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func tapRootView(_ sender: UITapGestureRecognizer) {
+    internal override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
-    private func addGesture() {
-        let gestureView = UITapGestureRecognizer(target: self, action: #selector(tapRootView(_:)))
-        view.addGestureRecognizer(gestureView)
-    }
+    // MARK: - Private methods
     
     private func setupUI() {
         disableSaveItemButton()
@@ -129,6 +142,8 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+// MARK: - PickerView
+
 extension PlayerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if isSelectTeam {
@@ -155,6 +170,8 @@ extension PlayerViewController: UIPickerViewDataSource {
         return isSelectTeam ? Array.teams[row] : Array.position[row]
     }
 }
+
+// MARK: - ImagePickerController
 
 extension PlayerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

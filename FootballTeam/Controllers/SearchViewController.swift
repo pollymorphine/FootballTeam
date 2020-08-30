@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
-// MARK: Protocol
 protocol SearchDelegate: class {
-    func viewController(_ viewController: SearchViewController, didPassedData predicate: NSCompoundPredicate)
+    func viewController(_ viewController: SearchViewController,
+                        didPassedData predicate: NSCompoundPredicate)
 }
 
 class SearchViewController: UIViewController {
+    
     weak var delegate: SearchDelegate?
+    
+// MARK: - IBOutlet
     
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -28,40 +33,54 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var pickerContainerView: UIView!
     @IBOutlet weak var selectLabel: UILabel!
     
-    private var isSelectTeam = true
-    private var selectedTeam: String!
-    private var selectedPosition: String!
+// MARK: - Private properties
     
+    private var isSelectTeam = true
+    private var selectedTeam: String = ""
+    private var selectedPosition: String = ""
+    
+// MARK: - Life cyrcle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        addGesture()
     }
+    
+// MARK: - Methods
+    
     @IBAction func selectTeamButtonPressed(_ sender: Any) {
-         isSelectTeam = true
-         selectLabel.text = "Select team"
-         pickerView.reloadAllComponents()
-         pickerContainerView.isHidden = false
+        isSelectTeam = true
+        selectLabel.text = Text.selectTeam
+        pickerView.reloadAllComponents()
+        pickerContainerView.isHidden = false
     }
     
     @IBAction func selectPositionButtonPressed(_ sender: Any) {
         isSelectTeam = false
-        selectLabel.text = "Select position"
+        selectLabel.text = Text.selectPosition
         pickerView.reloadAllComponents()
         pickerContainerView.isHidden = false
-        
     }
     
-    @objc func tapBackGroundView(_ sender: UITapGestureRecognizer) {
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        guard let name = nameTextField.text, let age = ageTextField.text else { return }
+        let compoundPredicate = makeCompoundPredicate(name: name,
+                                                      age: age,
+                                                      team: selectedTeam,
+                                                      position: selectedPosition)
+        delegate?.viewController(self, didPassedData: compoundPredicate)
         dismiss(animated: true, completion: nil)
     }
-    private func addGesture() {
-        let gestureView = UITapGestureRecognizer(target: self, action: #selector(tapBackGroundView(_:)))
-        view.addGestureRecognizer(gestureView)
+    
+    @IBAction func resetButtonPressed(_ sender: Any) {
+        delegate?.viewController(self, didPassedData: NSCompoundPredicate(andPredicateWithSubpredicates: []))
+        dismiss(animated: true, completion: nil)
     }
     
-    
+    internal override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         dismiss(animated: true, completion: nil)
+    }
+
     private func setupUI() {
         pickerContainerView.isHidden = true
         searchButton.layer.borderWidth = 1.0
@@ -70,10 +89,57 @@ class SearchViewController: UIViewController {
         resetButton.layer.borderWidth = 1.0
         resetButton.layer.borderColor = UIColor.lightGray.cgColor
         resetButton.layer.cornerRadius = 5.0
-        
-        
     }
 }
+
+// MARK: - Predicate
+
+extension SearchViewController {
+    private func makeCompoundPredicate(name: String,
+                                       age: String,
+                                       team: String,
+                                       position: String) -> NSCompoundPredicate {
+        
+        var predicates = [NSPredicate]()
+        
+        if !name.isEmpty {
+            let namePredicate = NSPredicate(format: "\(Predicate.playerName) '\(name)'")
+            predicates.append(namePredicate)
+        }
+        
+        if !position.isEmpty {
+            let positionPredicate = NSPredicate(format: "\(Predicate.position) '\(position)'")
+            predicates.append(positionPredicate)
+        }
+        
+        if !team.isEmpty {
+            let teamPredicate = NSPredicate(format: "\(Predicate.teamName) '\(team)'")
+            predicates.append(teamPredicate)
+        }
+        
+        if !age.isEmpty {
+            let selectedSegmentControl = ageCondition(index: segmentedControlView.selectedSegmentIndex)
+            let agePredicate = NSPredicate(format: "\(Predicate.age) \(selectedSegmentControl) '\(age)'")
+            predicates.append(agePredicate)
+        }
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+    }
+    
+    private func ageCondition(index: Int) -> String {
+        var condition: String!
+        
+        switch index {
+        case 0: condition = ">="
+        case 1: condition = "="
+        case 2: condition = "<="
+        default: break
+        }
+        
+        return condition
+    }
+}
+
+// MARK: - PickerView
 
 extension SearchViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -85,7 +151,6 @@ extension SearchViewController: UIPickerViewDelegate {
             selectedPosition = Array.position[row]
         }
         pickerContainerView.isHidden = true
-        
     }
 }
 

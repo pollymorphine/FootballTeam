@@ -73,7 +73,7 @@
                                                         <constraint firstAttribute="width" constant="129" id="hnN-36-B1w"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umv-Xg-8dT">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umv-Xg-8dT" customClass="SearchContainerView" customModule="FootballTeam" customModuleProvider="target">
                                                     <rect key="frame" x="149" y="38.5" width="214" height="128.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cjB-Lm-N1o">
@@ -160,7 +160,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bench" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAc-oZ-tx1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Play" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAc-oZ-tx1">
                                                     <rect key="frame" x="284" y="9" width="79" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="79" id="9st-nb-II9"/>
@@ -192,6 +192,7 @@
                                         <connections>
                                             <outlet property="age" destination="VhF-vP-pUQ" id="e0V-nq-7z0"/>
                                             <outlet property="fullName" destination="zkn-ZG-uUp" id="xvA-a0-qx4"/>
+                                            <outlet property="inPlayLabel" destination="bAc-oZ-tx1" id="y6E-6O-3n2"/>
                                             <outlet property="nationality" destination="pPS-WX-dnH" id="FgY-7f-oyj"/>
                                             <outlet property="number" destination="FRt-OZ-2MM" id="tzU-qO-vZl"/>
                                             <outlet property="photo" destination="d5G-Tc-vOH" id="3A2-Oj-Tcc"/>
@@ -275,12 +276,18 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpH-YH-EzW">
                                         <rect key="frame" x="15" y="203" width="230" height="30"/>
                                         <state key="normal" title="Search"/>
+                                        <connections>
+                                            <action selector="searchButtonPressed:" destination="E04-mI-Uw3" eventType="touchUpInside" id="6cp-dg-7CL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjI-po-gVd">
                                         <rect key="frame" x="15" y="241" width="230" height="30"/>
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="resetButtonPressed:" destination="E04-mI-Uw3" eventType="touchUpInside" id="Kcd-SA-9Eg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHY-LU-9yN">
                                         <rect key="frame" x="70" y="148" width="175" height="30"/>
@@ -561,6 +568,7 @@
                         <outlet property="playerNumber" destination="6OH-Xt-ix3" id="gq2-vx-XvD"/>
                         <outlet property="playerPhoto" destination="q7R-Xn-7Eu" id="xPF-TB-LCC"/>
                         <outlet property="saveButton" destination="izQ-8X-J0t" id="lfk-rb-bC1"/>
+                        <outlet property="segmentedControl" destination="NKg-7v-Rb8" id="Zre-XK-LfW"/>
                         <outlet property="selectPositionButton" destination="GXE-hY-uR2" id="Zi6-Nd-B8t"/>
                         <outlet property="selectTeamButton" destination="Tm4-o5-DzG" id="m7f-x6-G0w"/>
                     </connections>

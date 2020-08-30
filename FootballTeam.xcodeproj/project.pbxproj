@@ -62,12 +62,12 @@
 		CE06AFA024E700C7009FD362 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CEB1579C24F2EAEF000B1B5B /* Extension+MainViewController.swift */,
 				CE8F73CC24E6FF610078C778 /* Club+CoreDataClass.swift */,
 				CE8F73CD24E6FF610078C778 /* Club+CoreDataProperties.swift */,
 				CE8F73CE24E6FF610078C778 /* Player+CoreDataClass.swift */,
 				CE8F73CF24E6FF610078C778 /* Player+CoreDataProperties.swift */,
 				CE82960824E1639F0041688C /* FootballTeam.xcdatamodeld */,
-				CEB1579C24F2EAEF000B1B5B /* Extension+MainViewController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

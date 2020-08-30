@@ -64,13 +64,8 @@ final class CoreDataManager {
         let request: NSFetchRequest<T>
         var fetchedResult = [T]()
        
-        if #available(iOS 10.0, *) {
-            request = entity.fetchRequest() as! NSFetchRequest<T>
-        } else {
-            let entityName = String(describing: entity)
-            request = NSFetchRequest(entityName: entityName)
-        }
-        
+       request = entity.fetchRequest() as! NSFetchRequest<T>
+   
         let priceSortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
         
         request.predicate = predicate

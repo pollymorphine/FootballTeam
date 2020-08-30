@@ -17,6 +17,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var nationality: UILabel!
     @IBOutlet weak var position: UILabel!
     @IBOutlet weak var age: UILabel!
+    @IBOutlet weak var inPlayLabel: UILabel!
     
     func setupCell(with player: Player) {
         fullName.text = player.fullName
@@ -25,9 +26,11 @@ class MainTableViewCell: UITableViewCell {
         nationality.text = player.nationality
         position.text = player.position
         age.text = String(player.age)
+        inPlayLabel.text = player.inPlay ? Text.inPlay : Text.bench
         
         if let image = player.image as? UIImage {
             photo.image = image
         }
+        photo.layer.cornerRadius = 10.0
     }
 }
