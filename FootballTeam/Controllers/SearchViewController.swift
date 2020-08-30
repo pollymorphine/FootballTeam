@@ -83,11 +83,7 @@ class SearchViewController: UIViewController {
 
     private func setupUI() {
         pickerContainerView.isHidden = true
-        searchButton.layer.borderWidth = 1.0
-        searchButton.layer.borderColor = UIColor.lightGray.cgColor
         searchButton.layer.cornerRadius = 5.0
-        resetButton.layer.borderWidth = 1.0
-        resetButton.layer.borderColor = UIColor.lightGray.cgColor
         resetButton.layer.cornerRadius = 5.0
     }
 }

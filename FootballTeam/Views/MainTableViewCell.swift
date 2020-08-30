@@ -31,6 +31,5 @@ class MainTableViewCell: UITableViewCell {
         if let image = player.image as? UIImage {
             photo.image = image
         }
-        photo.layer.cornerRadius = 10.0
     }
 }

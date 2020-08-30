@@ -73,7 +73,7 @@
                                                         <constraint firstAttribute="width" constant="129" id="hnN-36-B1w"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umv-Xg-8dT" customClass="SearchContainerView" customModule="FootballTeam" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umv-Xg-8dT">
                                                     <rect key="frame" x="149" y="38.5" width="214" height="128.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cjB-Lm-N1o">
@@ -143,7 +143,7 @@
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.80339658049490792" green="0.96862745100000003" blue="0.83302125840647423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.88111923430000005" green="1" blue="0.88607722779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="cjB-Lm-N1o" firstAttribute="centerY" secondItem="umv-Xg-8dT" secondAttribute="centerY" id="5ex-Ne-oaS"/>
                                                         <constraint firstItem="cjB-Lm-N1o" firstAttribute="leading" secondItem="umv-Xg-8dT" secondAttribute="leading" constant="11" id="L1U-v4-K3L"/>
@@ -216,12 +216,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Players" id="EoV-hM-I4A">
                         <barButtonItem key="leftBarButtonItem" image="magnifyingglass" catalog="system" id="aAx-4v-Smb">
+                            <color key="tintColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="searchButtonPressed:" destination="i6U-aN-Rgi" id="5sf-ic-bas"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="person.badge.plus.fill" catalog="system" id="9aO-bV-qs2">
-                            <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addItemButtonPressed:" destination="i6U-aN-Rgi" id="U43-yN-hpc"/>
                             </connections>
@@ -229,7 +230,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="tableView" destination="1uj-Ff-fUA" id="45M-7X-nBa"/>
+                        <outlet property="mainTableView" destination="1uj-Ff-fUA" id="Pzw-PR-hZm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3L-Ts-eQs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -275,13 +276,17 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpH-YH-EzW">
                                         <rect key="frame" x="15" y="203" width="230" height="30"/>
-                                        <state key="normal" title="Search"/>
+                                        <color key="backgroundColor" red="0.84691113230000004" green="0.92654675249999996" blue="0.83698403840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="searchButtonPressed:" destination="E04-mI-Uw3" eventType="touchUpInside" id="6cp-dg-7CL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjI-po-gVd">
                                         <rect key="frame" x="15" y="241" width="230" height="30"/>
+                                        <color key="backgroundColor" red="0.86295944449999995" green="0.91708701849999996" blue="0.84068900349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -291,20 +296,25 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHY-LU-9yN">
                                         <rect key="frame" x="70" y="148" width="175" height="30"/>
-                                        <state key="normal" title="Select"/>
+                                        <state key="normal" title="Select">
+                                            <color key="titleColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="selectTeamButtonPressed:" destination="E04-mI-Uw3" eventType="touchUpInside" id="FYr-wV-W5K"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQS-CS-Gqs">
                                         <rect key="frame" x="88" y="111" width="157" height="30"/>
-                                        <state key="normal" title="Select"/>
+                                        <state key="normal" title="Select">
+                                            <color key="titleColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="selectPositionButtonPressed:" destination="E04-mI-Uw3" eventType="touchUpInside" id="jHR-ja-Cpv"/>
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fb2-IH-R9V">
                                         <rect key="frame" x="135" y="67" width="110" height="32"/>
+                                        <color key="backgroundColor" red="0.88111923430000005" green="1" blue="0.88607722779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <segments>
                                             <segment title="&gt;="/>
                                             <segment title="="/>
@@ -417,6 +427,7 @@
                                     </imageView>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NKg-7v-Rb8">
                                         <rect key="frame" x="26" y="17" width="322" height="32"/>
+                                        <color key="backgroundColor" red="0.88200000000000001" green="1" blue="0.88600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <segments>
                                             <segment title="in Play"/>
                                             <segment title="Bench"/>
@@ -475,7 +486,7 @@
                                 <rect key="frame" x="89" y="416" width="168" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Press to select">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="selectTeamButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0IW-K8-TRU"/>
@@ -490,7 +501,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXE-hY-uR2">
                                 <rect key="frame" x="108" y="442.5" width="149" height="30"/>
                                 <state key="normal" title="Press to select">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="selectPositionButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kpv-Ak-B80"/>

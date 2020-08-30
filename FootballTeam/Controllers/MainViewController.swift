@@ -11,7 +11,7 @@ import  CoreData
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mainTableView: UITableView!
     
     // MARK: - Private properties
     
@@ -26,14 +26,15 @@ class MainViewController: UIViewController {
     override  func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        //fillDataModel()
-        tableView.tableFooterView = UIView()
+        // запустить один раз, чтоб подгрузить пример
+        fillDataModel()
+        mainTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchData()
-        tableView.reloadData()
+        mainTableView.reloadData()
     }
     
     // MARK: - Methods
@@ -55,8 +56,9 @@ class MainViewController: UIViewController {
     }
     
     @objc func segmentedControlChanged(_ sender: Any?) {
+        players.removeAll()
         fetchData(predicate: selectedPredicate)
-        self.tableView.reloadData()
+        mainTableView.reloadData()
     }
     
     // MARK: - Private methods
@@ -76,33 +78,36 @@ class MainViewController: UIViewController {
         }
         
         if !players.isEmpty {
-            tableView.isHidden = false
+            mainTableView.isHidden = false
         } else {
-            tableView.isHidden = true
+            mainTableView.isHidden = true
         }
+        mainTableView.reloadData()
+        
     }
     
     private func setupUI() {
         let headerView = UIView (frame: CGRect(x: 0,
                                                y: 0,
-                                               width: tableView.frame.size.width,
-                                               height: 70))
+                                               width: mainTableView.frame.size.width,
+                                               height: 50))
         
-        let segment = UISegmentedControl(frame: CGRect(x: 20,
-                                                       y: 20,
-                                                       width: tableView.frame.size.width - 40,
+        let segment = UISegmentedControl(frame: CGRect(x: 10,
+                                                       y: 10,
+                                                       width: mainTableView.frame.size.width - 20,
                                                        height: 30))
         
         segment.insertSegment(withTitle: Text.all, at: 0, animated: true)
         segment.insertSegment(withTitle: Text.inPlay, at: 1, animated: true)
         segment.insertSegment(withTitle: Text.bench, at: 2, animated: true)
+        segment.backgroundColor = UIColor(red: 0.882, green: 1.0, blue: 0.886, alpha: 0.6)
         segment.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
         segment.selectedSegmentIndex = 0
         
         headerView.addSubview(segment)
         
         self.segmentedControl = segment
-        self.tableView.tableHeaderView = headerView
+        self.mainTableView.tableHeaderView = headerView
         
         navigationController?.navigationBar.barTintColor = .white
     }
@@ -127,16 +132,13 @@ extension MainViewController:  UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        if editingStyle == .delete {
-            self.dataManager?.delete(object: self.players[indexPath.row])
-            players.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            fetchData()
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, success) in
+            self.dataManager.delete(object: self.players[indexPath.row])
+            self.fetchData()
         }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
@@ -144,7 +146,8 @@ extension MainViewController: SearchDelegate {
     
     func viewController(_ viewController: SearchViewController, didPassedData predicate: NSCompoundPredicate) {
         fetchData(predicate: predicate)
-        tableView.reloadData()
+        selectedPredicate = predicate
+        mainTableView.reloadData()
     }
 }
 
