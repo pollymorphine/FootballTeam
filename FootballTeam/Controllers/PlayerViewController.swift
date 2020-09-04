@@ -30,6 +30,7 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
     private var selectedPosition: String!
     private var isSelectTeam = true
     var dataManager: CoreDataManager!
+    var player: Player!
     
     // MARK: - Life cyrcle
     

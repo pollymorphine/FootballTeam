@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Array {
     static let teams = ["Juventus", "Real Madrid", "Barcelona", "Chelsea", "Arsenal"]
@@ -41,4 +42,19 @@ enum Predicate {
     static let teamName = "team.name CONTAINS[cd]"
     static let position = "position CONTAINS[cd]"
     static let age = "age"
+    static var empty = NSCompoundPredicate(andPredicateWithSubpredicates: [])
+    static let inPlay = NSCompoundPredicate(andPredicateWithSubpredicates:
+        [NSPredicate(format: "inPlay = true")])
+    static let onBench = NSCompoundPredicate(andPredicateWithSubpredicates:
+        [NSPredicate(format: "inPlay = false")])
+}
+
+enum Color {
+    public static var greenTheme: UIColor {
+        return UIColor(red: 0.882, green: 1.0, blue: 0.886, alpha: 0.6)
+    }
+    
+    public static var customGreen: UIColor {
+        return UIColor(red: 0.317, green: 0.724, blue: 0.206, alpha: 1)
+    }
 }

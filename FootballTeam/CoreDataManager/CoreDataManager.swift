@@ -48,7 +48,8 @@ final class CoreDataManager {
     
     func createObject<T: NSManagedObject> (from entity: T.Type) -> T {
         let context = getContext()
-        let object = NSEntityDescription.insertNewObject(forEntityName: String(describing: entity), into: context) as! T
+        let object = NSEntityDescription.insertNewObject(forEntityName: String(describing: entity),
+                                                         into: context) as! T
         return object
     }
     
@@ -58,24 +59,37 @@ final class CoreDataManager {
         save(context: context)
     }
     
-
-    func fetchData<T: NSManagedObject>(for entity: T.Type, predicate: NSCompoundPredicate? = nil) -> [T] {
+    
+    func fetchDataWithController<T: NSManagedObject>(for entity: T.Type,
+                                                     sectionNameKeyPath: String? = nil,
+                                                     predicate: NSCompoundPredicate? = nil) -> NSFetchedResultsController<T>{
         let context = getContext()
         let request: NSFetchRequest<T>
-        var fetchedResult = [T]()
-       
-       request = entity.fetchRequest() as! NSFetchRequest<T>
-   
-        let priceSortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+        
+        request = entity.fetchRequest() as! NSFetchRequest<T>
+        
+    
+        var sortDescriptor: NSSortDescriptor
+        if entity == Player.self {
+                   sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
+               } else {
+                   sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+               }
         
         request.predicate = predicate
-        request.sortDescriptors = [priceSortDescriptor]
+        request.sortDescriptors = [sortDescriptor]
+
+        
+        let controller = NSFetchedResultsController(fetchRequest: request,
+                                                    managedObjectContext: context,
+                                                    sectionNameKeyPath: sectionNameKeyPath,
+                                                    cacheName: nil)
         
         do {
-            fetchedResult = try context.fetch(request)
+            try controller.performFetch()
         } catch {
-            debugPrint("Could not fetch: \(error.localizedDescription)")
+            debugPrint("Couldn't fetch \(error.localizedDescription)")
         }
-        return fetchedResult
+        return controller
     }
 }
