@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+
 enum Array {
     static let teams = ["Juventus", "Real Madrid", "Barcelona", "Chelsea", "Arsenal"]
     static let position = ["Midfielder", "Goalkeeper", "Defender", "Forward" ]
@@ -26,6 +28,7 @@ enum Text {
     static let all = "All"
     static let inPlay = "in Play"
     static let bench = "Bench"
+    static let position = "position"
 }
 
 enum Name {
@@ -43,10 +46,8 @@ enum Predicate {
     static let position = "position CONTAINS[cd]"
     static let age = "age"
     static var empty = NSCompoundPredicate(andPredicateWithSubpredicates: [])
-    static let inPlay = NSCompoundPredicate(andPredicateWithSubpredicates:
-        [NSPredicate(format: "inPlay = true")])
-    static let onBench = NSCompoundPredicate(andPredicateWithSubpredicates:
-        [NSPredicate(format: "inPlay = false")])
+    static let inPlay = NSPredicate(format: "inPlay = true")
+    static let onBench = NSPredicate(format: "inPlay = false")
 }
 
 enum Color {
@@ -58,3 +59,13 @@ enum Color {
         return UIColor(red: 0.317, green: 0.724, blue: 0.206, alpha: 1)
     }
 }
+    
+enum Image {
+        public static var thrash: UIImage {
+            return UIImage(systemName: "trash") ?? UIImage()
+        }
+        public static var edite: UIImage {
+            return UIImage(systemName: "square.and.pencil") ?? UIImage()
+        }
+    }
+

@@ -26,11 +26,12 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Private properties
     
     private var imagePickerController = UIImagePickerController()
-    private var selectedTeam: String!
-    private var selectedPosition: String!
+    private var selectedTeam: String?
+    private var selectedPosition: String?
     private var isSelectTeam = true
-    var dataManager: CoreDataManager!
-    var player: Player!
+    private var team: Club?
+    var dataManager: CoreDataManager?
+    var player: Player?
     
     // MARK: - Life cyrcle
     
@@ -39,6 +40,11 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
         setupUI()
         setKeyboardNotification()
         setupDelegate() 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupCurrentPlayer()
     }
     
     // MARK: - Methods
@@ -58,31 +64,41 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        let context = dataManager.getContext()
+        let context = dataManager?.getContext()
         
-        let team = dataManager.createObject(from: Club.self)
-        team.name = selectedTeam
+        let team = dataManager?.createObject(from: Club.self)
+        team?.name = selectedTeam
         
-        let player = dataManager.createObject(from: Player.self)
+        let selectedPlayer: Player?
+        
+        if let player = player {
+            selectedPlayer = player
+            selectedPlayer?.club? = player.club!
+        } else {
+            selectedPlayer = dataManager?.createObject(from: Player.self)
+            selectedPlayer?.club = team
+        }
+        
+        //let player = dataManager.createObject(from: Player.self)
         guard let age = playerAge.text else { return }
         guard let num = playerAge.text else { return }
-        player.fullName = playerName.text
-        player.nationality = playerNationality.text
-        player.age = Int16(age) ?? 0
-        player.number = Int16(num) ?? 0
-        player.position = selectedPosition
-        player.club = team
-        player.image = playerPhoto.image
+        selectedPlayer?.fullName = playerName.text
+        selectedPlayer?.nationality = playerNationality.text
+        selectedPlayer?.age = Int16(age) ?? 0
+        selectedPlayer?.number = Int16(num) ?? 0
+        selectedPlayer?.position = selectedPosition
+      //  selectedPlayer.club = team
+        selectedPlayer?.image = playerPhoto.image
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            player.inPlay = true
+            selectedPlayer?.inPlay = true
         case 1:
-            player.inPlay = false
+            selectedPlayer?.inPlay = false
         default: ()
         }
         
-        dataManager.save(context: context)
+        dataManager?.save(context: context!)
         navigationController?.popViewController(animated: true)
     }
     
@@ -92,6 +108,28 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Private methods
     
+    private func setupCurrentPlayer() {
+        guard let currentPlayer = player else { return }
+        
+        playerPhoto.image = currentPlayer.image as? UIImage
+        playerNumber.text = "\(currentPlayer.number)"
+        playerName.text = currentPlayer.fullName
+        playerNationality.text = currentPlayer.nationality
+        playerAge.text = "\(currentPlayer.age)"
+        if let team = currentPlayer.club {
+            selectTeamButton.setTitle(team.name, for: .normal)
+        }
+        selectedTeam = selectTeamButton.title(for: .normal)
+        selectPositionButton.setTitle(currentPlayer.position, for: .normal)
+        selectedPosition = selectPositionButton.title(for: .normal)
+        
+        if currentPlayer.inPlay {
+            segmentedControl.selectedSegmentIndex = 0
+        } else {
+            segmentedControl.selectedSegmentIndex = 1
+        }
+    }
+    
     private func setupUI() {
         disableSaveItemButton()
         imagePickerController.allowsEditing = true
@@ -99,7 +137,6 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
         imagePickerController.delegate = self
         saveButton.layer.cornerRadius = 6
         navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = .blue
         navigationItem.title = Text.titlePlayerVC
     }
     

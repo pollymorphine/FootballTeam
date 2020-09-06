@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE82960024E1639F0041688C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8295FF24E1639F0041688C /* AppDelegate.swift */; };
-		CE82960224E1639F0041688C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82960124E1639F0041688C /* SceneDelegate.swift */; };
 		CE82960724E1639F0041688C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE82960524E1639F0041688C /* Main.storyboard */; };
 		CE82960A24E1639F0041688C /* FootballTeam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE82960824E1639F0041688C /* FootballTeam.xcdatamodeld */; };
 		CE82960C24E163A20041688C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE82960B24E163A20041688C /* Assets.xcassets */; };
@@ -27,7 +26,6 @@
 /* Begin PBXFileReference section */
 		CE8295FC24E1639F0041688C /* FootballTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8295FF24E1639F0041688C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE82960124E1639F0041688C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE82960624E1639F0041688C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE82960924E1639F0041688C /* FootballTeam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FootballTeam.xcdatamodel; sourceTree = "<group>"; };
 		CE82960B24E163A20041688C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8295FF24E1639F0041688C /* AppDelegate.swift */,
-				CE82960124E1639F0041688C /* SceneDelegate.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -225,7 +222,6 @@
 				CE9EB3DD24EEF3E4006522EF /* UIViewController+Extension.swift in Sources */,
 				CEAEC74724F1C2530087CAE1 /* SearchContainerView.swift in Sources */,
 				CE82960024E1639F0041688C /* AppDelegate.swift in Sources */,
-				CE82960224E1639F0041688C /* SceneDelegate.swift in Sources */,
 				CE82960A24E1639F0041688C /* FootballTeam.xcdatamodeld in Sources */,
 				CE82961724E169D80041688C /* PlayerViewController.swift in Sources */,
 				CE82961B24E173040041688C /* MainTableViewCell.swift in Sources */,

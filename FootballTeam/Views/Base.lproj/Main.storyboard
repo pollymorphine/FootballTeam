@@ -14,6 +14,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xSC-9k-6Qt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="i6U-aN-Rgi" kind="relationship" relationship="rootViewController" id="c1c-fU-rRP"/>
@@ -224,7 +225,7 @@
                         <barButtonItem key="rightBarButtonItem" image="person.badge.plus.fill" catalog="system" id="9aO-bV-qs2">
                             <color key="tintColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="addItemButtonPressed:" destination="i6U-aN-Rgi" id="U43-yN-hpc"/>
+                                <action selector="addPlayerButtonPressed:" destination="i6U-aN-Rgi" id="U43-yN-hpc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -589,6 +590,7 @@
             <point key="canvasLocation" x="138.40000000000001" y="94.902548725637189"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.26662908439999999" green="0.61193289969999998" blue="0.1774463091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="avatar_man (1)" width="369" height="369"/>
         <image name="depositphotos_11495188-stock-illustration-футбольный-мяч (1)" width="189" height="600"/>

@@ -28,6 +28,12 @@ class MainTableViewCell: UITableViewCell {
         age.text = String(player.age)
         inPlayLabel.text = player.inPlay ? Text.inPlay : Text.bench
         
+        if player.inPlay {
+            inPlayLabel.textColor = Color.customGreen
+        } else {
+            inPlayLabel.textColor = .orange
+        }
+        
         if let image = player.image as? UIImage {
             photo.image = image
         }

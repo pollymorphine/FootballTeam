@@ -68,14 +68,10 @@ final class CoreDataManager {
         
         request = entity.fetchRequest() as! NSFetchRequest<T>
         
+        let sortDescriptor = NSSortDescriptor(key: Text.position,
+        ascending: true,
+        selector: #selector(NSString.localizedStandardCompare(_:)))
     
-        var sortDescriptor: NSSortDescriptor
-        if entity == Player.self {
-                   sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
-               } else {
-                   sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-               }
-        
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
 
