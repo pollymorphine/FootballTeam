@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         // запустить один раз, чтоб подгрузить пример
-        //fillDataModel()
+        fillDataModel()
         mainTableView.tableFooterView = UIView()
         fetchData()
     }
