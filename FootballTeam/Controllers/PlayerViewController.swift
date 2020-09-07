@@ -39,7 +39,7 @@ final class PlayerViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupUI()
         setKeyboardNotification()
-        setupDelegate() 
+        setupDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,6 +134,7 @@ final class PlayerViewController: UIViewController, UITextFieldDelegate {
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         saveButton.layer.cornerRadius = 6
+        navigationController?.navigationBar.tintColor = Color.customGreen
         navigationController?.navigationBar.barTintColor = .white
         navigationItem.title = Text.titlePlayerVC
     }
