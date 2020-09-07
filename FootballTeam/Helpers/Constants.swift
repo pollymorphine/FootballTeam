@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-
-
 enum Array {
     static let teams = ["Juventus", "Real Madrid", "Barcelona", "Chelsea", "Arsenal"]
     static let position = ["Midfielder", "Goalkeeper", "Defender", "Forward" ]
