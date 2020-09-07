@@ -9,7 +9,7 @@
 import UIKit
 import  CoreData
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     @IBOutlet weak var mainTableView: UITableView!
     
@@ -21,7 +21,6 @@ class MainViewController: UIViewController {
     var dataManager: CoreDataManager!
     var fetchedResultController: NSFetchedResultsController<Player>?
     
-    
     // MARK: - Life cyrcle
     
     override  func viewDidLoad() {
@@ -29,16 +28,13 @@ class MainViewController: UIViewController {
         setupUI()
         // запустить один раз, чтоб подгрузить пример
         fillDataModel()
-        mainTableView.tableFooterView = UIView()
         fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        mainTableView.reloadData()
-       // dataManager.save()
-
-    }
+         dataManager.save()
+  }
     
     // MARK: - Methods
     
@@ -157,7 +153,7 @@ extension MainViewController:  UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let currentPlayer = self.fetchedResultController?.object(at: indexPath) else { return nil }
         
-        let statusButton = currentPlayer.inPlay ? Text.inPlay : Text.bench
+        let statusButton = currentPlayer.inPlay ? Text.bench : Text.inPlay
 
         let delete = UIContextualAction(style: .destructive, title: nil) { (action, view, success) in
             self.dataManager.delete(object: currentPlayer)

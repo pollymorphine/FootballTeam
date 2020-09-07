@@ -46,6 +46,17 @@ final class CoreDataManager {
         }
     }
     
+    func save() {
+        if getContext().hasChanges {
+            do {
+                try getContext().save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
     func createObject<T: NSManagedObject> (from entity: T.Type) -> T {
         let context = getContext()
         let object = NSEntityDescription.insertNewObject(forEntityName: String(describing: entity),
@@ -69,12 +80,12 @@ final class CoreDataManager {
         request = entity.fetchRequest() as! NSFetchRequest<T>
         
         let sortDescriptor = NSSortDescriptor(key: Text.position,
-        ascending: true,
-        selector: #selector(NSString.localizedStandardCompare(_:)))
-    
+                                              ascending: true,
+                                              selector: #selector(NSString.localizedStandardCompare(_:)))
+        
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
-
+        
         
         let controller = NSFetchedResultsController(fetchRequest: request,
                                                     managedObjectContext: context,

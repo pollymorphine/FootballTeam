@@ -15,7 +15,7 @@ protocol SearchDelegate: class {
                         didPassedData predicate: NSCompoundPredicate)
 }
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
     weak var delegate: SearchDelegate?
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerViewController: UIViewController, UITextFieldDelegate {
+final class PlayerViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlet
     
@@ -79,7 +79,6 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
             selectedPlayer?.club = team
         }
         
-        //let player = dataManager.createObject(from: Player.self)
         guard let age = playerAge.text else { return }
         guard let num = playerAge.text else { return }
         selectedPlayer?.fullName = playerName.text
@@ -87,7 +86,6 @@ class PlayerViewController: UIViewController, UITextFieldDelegate {
         selectedPlayer?.age = Int16(age) ?? 0
         selectedPlayer?.number = Int16(num) ?? 0
         selectedPlayer?.position = selectedPosition
-      //  selectedPlayer.club = team
         selectedPlayer?.image = playerPhoto.image
         
         switch segmentedControl.selectedSegmentIndex {
